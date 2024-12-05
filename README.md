@@ -1,1 +1,2 @@
 # WordSalad
+Hello world!
