@@ -75,6 +75,7 @@ app.post("/messages", async (req, res) => {
 
 app.post("/chatroom/:chatRoomID", async (req, res) => {
 	try {
+        console.log(io.s)
 		const { user, message } = req.body;
 
 		if (!user || !message) {
