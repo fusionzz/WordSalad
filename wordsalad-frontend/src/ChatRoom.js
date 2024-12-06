@@ -6,10 +6,12 @@ const ChatRoom = () => {
 	const [messages, setMessages] = useState([]);
 	const [user, setUser] = useState('');
 	const [message, setMessage] = useState('');
+    const [chatRoomID, setChatRoomID] = useState('')
 
 	const fetchMessages = async () => {
 		try {
-			const response = await fetch('http://localhost:5000/messages');
+			const response = await fetch(`http://localhost:5000/chatroom/${chatRoomID}`);
+            //const response = await fetch(`http://localhost:5000/messages`);
 			const data = await response.json();
 			setMessages(data);
 		} catch (error) {
@@ -19,7 +21,8 @@ const ChatRoom = () => {
 
 	const sendMessage = async () => {
 		try {
-			await fetch('http://localhost:5000/messages', {
+			await fetch(`http://localhost:5000/chatroom/${chatRoomID}`, {
+            //await fetch(`http://localhost:5000/messages`, {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
@@ -49,7 +52,15 @@ const ChatRoom = () => {
 
 	return (
 		<div>
-			<h2>Chat Room</h2>
+			<h2>Chat Room 
+                <input
+					type="text"
+					placeholder="Chat Room ID"
+					value={chatRoomID}
+					onChange={(e) => setChatRoomID(e.target.value)}
+				/>
+                <button onClick={fetchMessages}>Change Room</button>
+                </h2>
 			<ul>
 				{messages.map((message) => (
 					<li key={message._id}>

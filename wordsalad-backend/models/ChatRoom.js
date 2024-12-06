@@ -3,8 +3,8 @@
 const mongoose = require('mongoose');
 
 const chatRoomSchema = new mongoose.Schema({
-	chatRoomID: {type: String, require: true},
-	chatMessages: { type: Array, required: true }
+	crID: {type: String, require: true},
+	chatMessages: { type: Array, required: true, default: [] }
 });
 
 const ChatRoom = mongoose.model('ChatRoom', chatRoomSchema);

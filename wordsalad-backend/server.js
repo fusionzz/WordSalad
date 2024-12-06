@@ -33,10 +33,15 @@ app.get("/messages", async (req, res) => {
 	}
 });
 
-app.get("/:chatRoomId", async (req, res) => {
+app.get("/chatroom/:chatRoomID", async (req, res) => {
 	try {
-		const chatRoom = await ChatRoom.findOne({'chatRoomID': req.params[chatRoomID]});
-        messages = chatRoom.chatMessages
+		const chatRoom = await ChatRoom.findOne({'crID': req.params['chatRoomID']});
+        if (chatRoom != null){
+            messages = chatRoom.chatMessages;
+        }
+        else {
+            messages = [];
+        }
 		res.json(messages);
 	} catch (error) {
 		console.error(error);
@@ -68,7 +73,7 @@ app.post("/messages", async (req, res) => {
 	}
 });
 
-app.post("/:chatRoomId", async (req, res) => {
+app.post("/chatroom/:chatRoomID", async (req, res) => {
 	try {
 		const { user, message } = req.body;
 
@@ -83,7 +88,15 @@ app.post("/:chatRoomId", async (req, res) => {
 			message,
 		});
         
-        const chatRoom = await ChatRoom.findOne({'chatRoomID': req.params[chatRoomID]});
+        chatRoom = await ChatRoom.findOne({'crID': req.params['chatRoomID']});
+        if (chatRoom == null){
+            crID = req.params['chatRoomID'];
+            cms = [];
+            chatRoom = new ChatRoom({
+                crID,
+                cms,
+            });
+        }
         chatRoom.chatMessages.push(chatMessage)
 
 		await chatRoom.save();
