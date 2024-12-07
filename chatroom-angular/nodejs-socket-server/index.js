@@ -13,6 +13,8 @@ const io = new Server(server, {
   }
 });
 
+const chat = io.of("/chat")
+
 
 app.get('/', (req, res) => {
   console.log("hello world")  
@@ -20,16 +22,18 @@ app.get('/', (req, res) => {
   });
 
 
-io.on('connection', (socket)=>{
+chat.on('connection', (socket)=>{
     console.log('a user connected');
+    console.log(chat.sockets)
     socket.on('message',(msg)=>{
         console.log('message : ' + msg);
-        io.emit('message', msg);
+        chat.emit('message', msg);
     })
 
     
     socket.on('disconnect',()=>{
     console.log('user disconnected')
+    console.log(chat.sockets)
     })
 })
 

@@ -4,12 +4,13 @@ import { ChatMessage } from '../../models/chat-message';
 import { Observable, Subscription } from 'rxjs';
 import { FormsModule } from '@angular/forms';
 import { NgFor } from '@angular/common';
+import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-chat-app',
   templateUrl: './chat-app.component.html',
   styleUrls: ['./chat-app.component.css'],
-  imports: [FormsModule, NgFor]
+  imports: [FormsModule, NgFor, RouterLink, RouterOutlet]
 })
 export class ChatAppComponent {
 

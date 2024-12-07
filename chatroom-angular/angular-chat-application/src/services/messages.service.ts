@@ -9,14 +9,17 @@ export class MessagesService {
 
   constructor(private socket: Socket) { }
 
+
   sendMessage(msg:string){
     console.log(msg)
+    this.socket.ioSocket.nsp = "/chat"
     this.socket.emit('message', msg);
   }
 
 
   getMessage(){
   return  new Observable((observer: Observer<any>)=>{
+      this.socket.ioSocket.nsp = "/chat"
       this.socket.on('message', (message:string)=>{
         observer.next(message)
       })
