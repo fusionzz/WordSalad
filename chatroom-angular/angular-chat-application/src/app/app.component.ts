@@ -4,7 +4,7 @@ import { ChatAppComponent } from './chat-app/chat-app.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, ChatAppComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

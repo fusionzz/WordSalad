@@ -2,11 +2,14 @@ import { Component } from '@angular/core';
 import { MessagesService } from '../../services/messages.service';
 import { ChatMessage } from '../../models/chat-message';
 import { Observable, Subscription } from 'rxjs';
+import { FormsModule } from '@angular/forms';
+import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-chat-app',
   templateUrl: './chat-app.component.html',
-  styleUrls: ['./chat-app.component.css']
+  styleUrls: ['./chat-app.component.css'],
+  imports: [FormsModule, NgFor]
 })
 export class ChatAppComponent {
 
