@@ -7,12 +7,23 @@ import { TeamLobbyComponent } from './components/team-lobby/team-lobby.component
 import { ChosenPlayerComponent } from './components/chosen-player/chosen-player.component';
 import { GuessingPlayerComponent } from './components/guessing-player/guessing-player.component';
 import { EndScreenComponent } from './components/end-screen/end-screen.component';
+import { WrapperComponent } from './components/wrapper/wrapper.component';
 
 export const routes: Routes = [
     {
         path: '',
+        redirectTo: '/home',
+        pathMatch: 'full',
+    },
+    {
+        path: 'home',
         component: HomeComponent,
         title: "Home"
+    },
+    {
+        path: 'wrapper',
+        component: WrapperComponent,
+        title: ""
     },
     {
         path: 'lobby',
