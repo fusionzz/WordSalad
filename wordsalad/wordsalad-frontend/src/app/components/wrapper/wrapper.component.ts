@@ -8,6 +8,13 @@ import { RouterLink, RouterOutlet } from '@angular/router';
   styleUrl: './wrapper.component.css'
 })
 export class WrapperComponent {
+  name: string = '';
+  ngDoCheck(){
+    this.name = sessionStorage.getItem('name') || '';
+  }
 
+  removeName(){
+    sessionStorage.clear()
+  }
 
 }

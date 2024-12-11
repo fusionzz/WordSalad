@@ -9,4 +9,11 @@ import { RouterLink } from '@angular/router';
 })
 export class ChooseLetterComponent {
 
+  letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  chosen = '';
+
+  ngOnInit(){
+    this.chosen = this.letters[Math.floor(Math.random()*26)]
+  }
+
 }

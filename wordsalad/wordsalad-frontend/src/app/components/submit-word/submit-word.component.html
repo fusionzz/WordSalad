@@ -1,3 +1,9 @@
 <h1>Please type the words below</h1>
-<p><input type="text" /></p>
-<p><button routerLink="/team-lobby">Submit</button></p>
+<p><input [(ngModel)]="wordField" type="text" /></p>
+<p><button (click)="addWord(this.wordField)">Submit</button></p>
+<h2>Your words:</h2>
+<ol>
+    @for (word of words; track $index){
+        <li>{{ word }}</li>
+    }
+</ol>

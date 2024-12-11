@@ -1,4 +1,6 @@
 <h1>Word Salad</h1>
-<p>Enter name: <input type="text" /> </p>
-<p><button routerLink="/lobby">Create new room</button></p>
-<p><button routerLink="/lobby">Join existing room</button><input type="text" /></p>
+<form [formGroup]="roomForm">
+    <p>Enter name: <input type="text" formControlName="name" /> </p>
+    <p><button [disabled]="!roomForm.valid" (click)="createNewRoom()" routerLink="/lobby">Create new room</button></p>
+    <p><button [disabled]="!roomForm.valid" (click)="joinExistingRoom()" routerLink="/lobby">Join existing room</button><input type="text" formControlName="existingRoomCode" /></p>
+</form>
