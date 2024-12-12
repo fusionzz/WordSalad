@@ -1,18 +1,20 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-submit-word',
-  imports: [RouterLink, FormsModule, Router],
+  imports: [RouterLink, FormsModule],
   templateUrl: './submit-word.component.html',
   styleUrl: './submit-word.component.css'
 })
 export class SubmitWordComponent {
 
-  constructor(private router: Router){
+  constructor(){
 
   }
+
+  numWords = 5;
 
   words: string[] = []
   wordField = '';
@@ -20,9 +22,9 @@ export class SubmitWordComponent {
   addWord(word:string){
     this.words.push(word);
     this.wordField = '';
+  }
 
-    if (this.words.length == 5){
-      this.router.navigate(["/team-lobby"]);
-    }
+  deleteWord(index:number){
+    this.words.splice(index, 1);
   }
 }

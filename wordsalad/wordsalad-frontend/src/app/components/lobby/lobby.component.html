@@ -17,4 +17,4 @@
         <li>{{ name }}</li>
     }
 </ul>
-<button routerLink="/choose-letter">Ready</button>
+<button [disabled]="this.unassigned.indexOf(this.name) != -1" routerLink="/choose-letter">Ready</button>

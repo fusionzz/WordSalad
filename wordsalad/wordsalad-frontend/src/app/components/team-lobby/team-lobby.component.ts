@@ -9,4 +9,9 @@ import { RouterLink } from '@angular/router';
 })
 export class TeamLobbyComponent {
 
+  name = sessionStorage.getItem('name');
+  team = sessionStorage.getItem('team');
+
+  players: string[] = [this.name!];
+  
 }

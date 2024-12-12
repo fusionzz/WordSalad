@@ -1,9 +1,12 @@
 <h1>Please type the words below</h1>
 <p><input [(ngModel)]="wordField" type="text" /></p>
-<p><button (click)="addWord(this.wordField)">Submit</button></p>
+<p>
+    <button [disabled]="(this.words.length >= numWords) || (this.wordField.length == 0)" (click)="addWord(this.wordField)">Submit</button>
+    @if (this.words.length >= numWords) {<button routerLink="/team-lobby">Ready</button>}
+</p>
 <h2>Your words:</h2>
 <ol>
     @for (word of words; track $index){
-        <li>{{ word }}</li>
+        <li>{{ word }} <button (click)="deleteWord($index)">Delete</button></li>
     }
 </ol>
